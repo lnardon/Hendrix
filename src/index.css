@@ -19,3 +19,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+.App {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+}
