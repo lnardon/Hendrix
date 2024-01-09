@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import ThemeSelector from "./components/ThemeSelector";
 import "./App.css";
 
 const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
-const fretMarks = [0, 2, 4, 6, 8, 11, 14, 16, 18, 20];
+const fretMarks = [2, 4, 6, 8, 11, 14, 16, 18, 20];
 const notesLength = 22;
 const scales = {
   Major: [0, 2, 4, 5, 7, 9, 11, 12],
@@ -35,7 +36,7 @@ function App() {
             className="fret"
             style={{
               animationDelay: i * 32 + "ms",
-              filter: `opacity(${scaleNotes.includes(note) ? "100%" : "16%"})`,
+              filter: `opacity(${scaleNotes.includes(note) ? "100%" : "8%"})`,
             }}
           >
             {note}
@@ -55,6 +56,7 @@ function App() {
 
   return (
     <div className="App">
+      <ThemeSelector />
       <div>
         <select
           className="scale-select"
@@ -110,7 +112,7 @@ function App() {
                   key={i + Math.random()}
                   className="fret-mark"
                   style={{
-                    animationDelay: i * 64 + "ms",
+                    animationDelay: i * 32 + "ms",
                     filter: `opacity(${fretMarks.includes(i) ? "100%" : "0%"})`,
                   }}
                 >
