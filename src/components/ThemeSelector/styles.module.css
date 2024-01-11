@@ -56,6 +56,18 @@
   cursor: pointer;
   font-size: 0.8rem;
   font-weight: 400;
+  transition: all 0.2s ease-in-out;
+  border-bottom: 0.125rem solid #fafafa;
+}
+
+.option:last-child {
+  border-bottom: 0.125rem solid #fafafa00;
+}
+
+.option:hover {
+  border-right: 0.5rem solid transparent;
+  outline: none;
+  border-radius: 0rem;
 }
 
 @keyframes appear {

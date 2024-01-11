@@ -18,22 +18,22 @@ const themes = [
     #784ba0 50%,
     #2b86c5 100%
   )`,
-    baseColor: "#fff",
+    baseColor: "#784ba0",
   },
   {
     name: "Deep Blue 9",
     gradient: `linear-gradient( 288deg,  rgba(0,85,255,1) 1.5%, rgba(4,56,115,1) 91.6% )`,
-    baseColor: "#fff",
+    baseColor: "rgba(0,85,255,1)",
   },
   {
     name: "Sunny Days",
     gradient: `radial-gradient( circle farthest-corner at 10% 20%,  rgba(237,3,32,0.87) 20.8%, rgba(242,121,1,0.84) 74.4% )`,
-    baseColor: "#fff",
+    baseColor: "rgba(242,121,1,0.84)",
   },
   {
     name: "Lazy",
     gradient: `linear-gradient( 109.6deg,  rgba(61,245,167,1) 11.2%, rgba(9,111,224,1) 91.1% )`,
-    baseColor: "#fff",
+    baseColor: "rgba(61,245,167,1)",
   },
 ];
 
@@ -41,9 +41,16 @@ const ThemeSelector: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentTheme, setCurrentTheme] = useState(themes[0]);
 
-  function handleCurrentTheme(theme: string) {
-    document.documentElement.style.setProperty("--background-image", theme);
-    setCurrentTheme(themes.find((t) => t.gradient === theme)!);
+  function handleCurrentTheme(theme: any) {
+    document.documentElement.style.setProperty(
+      "--background-image",
+      theme.gradient
+    );
+    document.documentElement.style.setProperty(
+      "--background-color",
+      theme.baseColor
+    );
+    setCurrentTheme(themes.find((t) => t.gradient === theme.gradient)!);
   }
 
   useEffect(() => {
@@ -76,7 +83,7 @@ const ThemeSelector: React.FC = () => {
               <DropdownMenuItem
                 key={theme.name}
                 className="flex items-center"
-                onClick={() => handleCurrentTheme(theme.gradient)}
+                onClick={() => handleCurrentTheme(theme)}
               >
                 <div className={styles.option}>
                   {theme.name}
