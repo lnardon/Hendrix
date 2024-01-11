@@ -40,7 +40,7 @@ function App() {
               filter: `opacity(${scaleNotes.includes(note) ? "100%" : "8%"})`,
             }}
           >
-            {note}
+            <span className="noteLabel">{note}</span>
           </div>
         );
       }
@@ -91,33 +91,37 @@ function App() {
       <div className="fretboard">
         <div className="tuner">
           {tunning.map((tune, index) => (
-            <select
-              className={
-                getScaleNotes(rootScaleNote, scaleType).includes(tune)
-                  ? "tunner-select colored"
-                  : "tunner-select"
-              }
-              key={index}
-              onChange={(e) => {
-                const newTuning = [...tunning];
-                newTuning[index] = e.target.value;
-                setTunning(newTuning);
-              }}
-              value={tune}
-              style={{ animationDelay: index * 64 + "ms" }}
-            >
-              {notes.map((note) => (
-                <option
-                  key={note}
-                  value={note}
-                  style={{
-                    cursor: "pointer",
-                  }}
-                >
-                  {note}
-                </option>
-              ))}
-            </select>
+            <div className="tunnerContent">
+              <div>{"\u2B95"}</div>
+
+              <select
+                className={
+                  getScaleNotes(rootScaleNote, scaleType).includes(tune)
+                    ? "tunner-select colored"
+                    : "tunner-select"
+                }
+                key={index}
+                onChange={(e) => {
+                  const newTuning = [...tunning];
+                  newTuning[index] = e.target.value;
+                  setTunning(newTuning);
+                }}
+                value={tune}
+                style={{ animationDelay: index * 64 + "ms" }}
+              >
+                {notes.map((note) => (
+                  <option
+                    key={note}
+                    value={note}
+                    style={{
+                      cursor: "pointer",
+                    }}
+                  >
+                    {note}
+                  </option>
+                ))}
+              </select>
+            </div>
           ))}
         </div>
         <div className="separator"></div>

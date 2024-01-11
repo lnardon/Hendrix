@@ -21,7 +21,7 @@
 
 .dot {
   margin-left: 0.15rem;
-  font-size: 1.25rem;
+  font-size: 2rem;
   line-height: 1.5rem;
   font-weight: 900;
   color: var(--background-color);
@@ -53,6 +53,14 @@
 .string {
   display: flex;
   flex-direction: row;
+}
+
+.noteLabel {
+  line-height: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  background-color: black;
+  font-weight: 500;
 }
 
 .fret {
@@ -96,6 +104,13 @@
   transition: all 0.7s ease-out;
 }
 
+.tunnerContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
 .tunner-select {
   width: 2.75rem;
   height: 1.75rem;
@@ -103,7 +118,6 @@
   margin: 0.5rem 1rem 0.5rem 0rem;
   padding: 0.125rem;
   background-color: transparent;
-  border: 0.1rem solid #fafafa;
   color: #fafafa;
   cursor: pointer;
   animation: tunnerAppear 0.7s ease-in-out forwards;
@@ -111,6 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
 }
 
 .menu {
@@ -133,7 +148,7 @@
   outline: none;
   background-color: transparent;
   border: none;
-  border-bottom: 0.125rem solid #fafafa;
+  border-bottom: 0.125rem solid var(--background-color);
   color: #fafafa;
   width: 5rem;
 }
