@@ -36,7 +36,7 @@
   background-color: #030609;
   border-radius: 0.5rem;
   border: 0.125rem solid #fafafa;
-  animation: appear 0.5s ease-in-out forwards;
+  animation: appear 0.7s ease;
   width: 9rem;
 }
 
@@ -72,12 +72,12 @@
 
 @keyframes appear {
   from {
-    opacity: 0;
-    tranform: translateY(-3rem);
+    /* opacity: 0; */
+    tranform: scale(0.5);
   }
 
   to {
-    opacity: 1;
-    tranform: translateY(0rem);
+    /* opacity: 1; */
+    tranform: scale(1);
   }
 }
