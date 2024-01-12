@@ -124,7 +124,12 @@ function App() {
         <div className="tuner">
           {tunning.map((tune, index) => (
             <div className="tunnerContent">
-              <div>{"\u2B95"}</div>
+              <div
+                className="arrow"
+                style={{ animationDelay: index * 64 + "ms" }}
+              >
+                {"\u2B95"}
+              </div>
 
               <select
                 className={
