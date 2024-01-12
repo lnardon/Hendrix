@@ -1,8 +1,10 @@
 # Hendrix
 
-Hendrix is a website to visually help with music composition on the guitar.
+Hendrix is a website designed to visually assist with music composition on the guitar. Choose a root note and scale, and the correct notes will be displayed on the fretboard.
 
 <img src="./demo.gif" style="width: 100%"/>
+
+Access the website here => https://hendrix-lnardon.vercel.app/
 
 </br>
 
