@@ -5,14 +5,22 @@ import "./App.css";
 
 const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
 const fretMarks = [2, 4, 6, 8, 11, 14, 16, 18, 20];
-const notesLength = 22;
 const scales: any = {
   Major: [0, 2, 4, 5, 7, 9, 11, 12],
   Minor: [0, 2, 3, 5, 7, 8, 10, 12],
 };
 
+const fretsAmnt = [
+  { value: 12, label: "12 frets" },
+  { value: 16, label: "16 frets" },
+  { value: 18, label: "18 frets" },
+  { value: 22, label: "22 frets" },
+  { value: 24, label: "24 frets" },
+];
+
 function App() {
   const [tunning, setTunning] = useState(["E", "B", "G", "D", "A", "E"]);
+  const [fretsAmount, setFretsAmout] = useState(fretsAmnt[3]);
   const [rootScaleNote, setRootScaleNote] = useState("C");
   const [scaleType, setScaleType] = useState(Object.keys(scales)[0]);
 
@@ -28,7 +36,7 @@ function App() {
     return tunning.map((stringNote) => {
       const startIndex = notes.indexOf(stringNote);
       const frets = [];
-      for (let i = 1; i <= notesLength; i++) {
+      for (let i = 1; i <= fretsAmount.value; i++) {
         const noteIndex = (startIndex + i) % notes.length;
         const note = notes[noteIndex];
         frets.push(
@@ -69,6 +77,9 @@ function App() {
           className="scale-select"
           onChange={(e) => setRootScaleNote(e.target.value)}
           value={rootScaleNote}
+          style={{
+            animationDelay: "0s",
+          }}
         >
           {notes.map((note) => (
             <option key={note} value={note}>
@@ -80,10 +91,31 @@ function App() {
           className="scale-select"
           onChange={(e) => setScaleType(e.target.value)}
           value={scaleType}
+          style={{
+            animationDelay: "0.2s",
+          }}
         >
           {Object.keys(scales).map((type) => (
             <option key={type} value={type}>
               {type}
+            </option>
+          ))}
+        </select>
+        <select
+          className="scale-select"
+          value={fretsAmount.value}
+          onChange={(e) =>
+            setFretsAmout(
+              fretsAmnt.filter((f) => f.value === parseInt(e.target.value))[0]
+            )
+          }
+          style={{
+            animationDelay: "0.3s",
+          }}
+        >
+          {fretsAmnt.map((amount) => (
+            <option key={amount.value} value={amount.value}>
+              {amount.label}
             </option>
           ))}
         </select>
@@ -136,7 +168,7 @@ function App() {
       </div>
       <div className="frets-mark">
         {/* eslint-disable-next-line prefer-spread */}
-        {Array.apply(null, Array(notesLength)).map((_note, i) => {
+        {Array.apply(null, Array(fretsAmount.value)).map((_note, i) => {
           return (
             <div
               key={i + Math.random()}
