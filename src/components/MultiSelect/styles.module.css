@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 0.125rem solid var(--border);
+  border-radius: 0.25rem;
+  color: antiquewhite;
+  background-color: #030609;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}

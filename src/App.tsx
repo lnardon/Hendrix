@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useEffect } from "react";
 import ThemeSelector from "./components/ThemeSelector";
+import MultiSelect from "./components/MultiSelect";
 import "./App.css";
 
 const notes = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];
@@ -28,6 +29,7 @@ function App() {
   const [fretsAmount, setFretsAmout] = useState(fretsAmnt[3]);
   const [rootScaleNote, setRootScaleNote] = useState("C");
   const [scaleType, setScaleType] = useState(Object.keys(scales)[0]);
+  const [positionsToShow, setPositionsToShow] = useState([1, 3, 5]);
 
   const getScaleNotes = (root: string, scaleType: any) => {
     const rootIndex = notes.indexOf(root);
@@ -44,16 +46,22 @@ function App() {
       for (let i = 1; i <= fretsAmount.value; i++) {
         const noteIndex = (startIndex + i) % notes.length;
         const note = notes[noteIndex];
+        const noteScaleIndex = scaleNotes.indexOf(note) + 1;
         frets.push(
           <div
             key={i + Math.random()}
             className="fret"
             style={{
               animationDelay: i * 32 + "ms",
-              filter: `opacity(${scaleNotes.includes(note) ? "100%" : "8%"})`,
+              filter: `opacity(${
+                scaleNotes.includes(note) &&
+                positionsToShow.includes(noteScaleIndex)
+                  ? "100%"
+                  : "8%"
+              })`,
             }}
           >
-            <span className="noteLabel">{note}</span>
+            <span className="noteLabel">{note + " - " + noteScaleIndex}</span>
           </div>
         );
       }
@@ -124,6 +132,7 @@ function App() {
             </option>
           ))}
         </select>
+        <MultiSelect setPositionsToShow={setPositionsToShow} />
       </div>
       <div className="fretboard">
         <div className="tuner">
