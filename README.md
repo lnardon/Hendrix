@@ -37,7 +37,7 @@ docker run -d -p 1969:1969 lnardon/hendrix
 git clone https://github.com/lnardon/Hendrix.git && cd Hendrix && docker build -t hendrix .
 ```
 
-2 - Start the container using the following command. Replace the placeholders with your information:
+2 - Start the container using the following command.
 
 ```bash
 docker run -d -p 1969:1969 hendrix
