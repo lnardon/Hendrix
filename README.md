@@ -1,4 +1,4 @@
-# Hendrix
+# [Hendrix](https://hendrix-lnardon.vercel.app/)
 
 Hendrix is a website designed to visually assist with music composition on the guitar. Choose a root note and scale, and the correct notes will be displayed on the fretboard.
 
