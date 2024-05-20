@@ -16,7 +16,15 @@ const options = [
 ];
 
 const MultiSelect: React.FC<MultiSelectProps> = ({ setPositionsToShow }) => {
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+  ]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -44,33 +52,45 @@ const MultiSelect: React.FC<MultiSelectProps> = ({ setPositionsToShow }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const numberToRoman: { [key: string]: string } = {
+    "1": "I",
+    "2": "II",
+    "3": "III",
+    "4": "IV",
+    "5": "V",
+    "6": "VI",
+    "7": "VII",
+  };
+
   return (
     <div ref={dropdownRef} className={styles.container}>
       <button className={styles.button} onClick={toggleDropdown}>
-        Show
+        Show Notes
       </button>
       {isDropdownOpen && (
         <div
           style={{
             position: "absolute",
-            zIndex: 100,
-            backgroundColor: "white",
-            border: "1px solid #ddd",
-            padding: "10px",
-            borderRadius: "5px",
+            zIndex: 10000000000000000,
+            backgroundColor: "var(--background-color)",
+            border: "1px solid var(--background)",
+            padding: "0.25rem",
+            borderRadius: "0.25rem",
             color: "black",
+            width: "8rem",
+            top: "3rem",
           }}
         >
           {options.map((option) => (
             <div key={option.value}>
-              <label>
+              <label className={styles.label}>
                 <input
                   type="checkbox"
                   value={option.value}
                   checked={selectedOptions.includes(option.value.toString())}
                   onChange={() => handleOptionChange(option.value.toString())}
                 />
-                {option.label}
+                {`Note ${numberToRoman[option.label]}`}
               </label>
             </div>
           ))}

@@ -26,10 +26,10 @@ const fretsAmnt = [
 
 function App() {
   const [tunning, setTunning] = useState(["E", "B", "G", "D", "A", "E"]);
-  const [fretsAmount, setFretsAmout] = useState(fretsAmnt[3]);
+  const [fretsAmount, setFretsAmout] = useState(fretsAmnt[0]);
   const [rootScaleNote, setRootScaleNote] = useState("C");
   const [scaleType, setScaleType] = useState(Object.keys(scales)[0]);
-  const [positionsToShow, setPositionsToShow] = useState([1, 3, 5]);
+  const [positionsToShow, setPositionsToShow] = useState([1, 2, 3, 4, 5, 6, 7]);
 
   const getScaleNotes = (root: string, scaleType: any) => {
     const rootIndex = notes.indexOf(root);
